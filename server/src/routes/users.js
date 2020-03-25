@@ -10,6 +10,6 @@ const {
 
 router.get('/users', checkUserToken, UsersController.usersGet);
 
-router.get('/users/:user', checkUserToken, UsersController.userGet);
+router.get('/users/:userId', checkUserToken, UsersController.userGet);
 
 module.exports = router;
