@@ -42,6 +42,10 @@ module.exports = {
               message: 'Login Successfull',
             });
           }
+          return res.status(401).send({
+            err: true,
+            message: 'Please check your password',
+          });
         }
       }
       return res.status(401).send({
@@ -80,22 +84,28 @@ module.exports = {
           website: req.body.website || '',
         };
         const isUserAdded = addUser(user);
-        console.log(isUserAdded);
-        const userTokenProperties = {
-          id: user.id,
-          name: user.name,
-          username: user.username,
-          email: user.email,
-          phone: user.phone,
-          website: user.website,
-        };
-        const token = jwtSignUser(JSON.parse(JSON.stringify(userTokenProperties)), ONE_WEEK);
-        res.status(200).send({
-          err: false,
-          token,
-          user: JSON.stringify(userTokenProperties),
-          message: 'Sign Up Successfull',
-        });
+        if (isUserAdded) {
+          const userTokenProperties = {
+            id: user.id,
+            name: user.name,
+            username: user.username,
+            email: user.email,
+            phone: user.phone,
+            website: user.website,
+          };
+          const token = jwtSignUser(JSON.parse(JSON.stringify(userTokenProperties)), ONE_WEEK);
+          res.status(200).send({
+            err: false,
+            token,
+            user: JSON.stringify(userTokenProperties),
+            message: 'Sign Up Successfull',
+          });
+        } else {
+          res.status(403).send({
+            err: true,
+            message: 'A user already exists with the given details. Please try logging in!',
+          });
+        }
       }
     } catch (err) {
       console.log(err);

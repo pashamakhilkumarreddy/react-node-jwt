@@ -10,8 +10,8 @@ module.exports = {
       authorization,
     } = req.headers;
     if (authorization) {
-      const token = authorization.replace('Bearer', '');
-      const payload = jwt.verify(token, config.authorization.jwtSecret);
+      const token = authorization.replace('Bearer ', '');
+      const payload = jwt.verify(token, config.jwt.jwtSecret);
       const {
         email,
       } = payload;

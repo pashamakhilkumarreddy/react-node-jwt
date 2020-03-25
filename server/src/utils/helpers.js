@@ -24,7 +24,6 @@ const addUser = (user) => {
   if (newUser.id && newUser.username && newUser.email && newUser.salt && newUser.password) {
     const users = getUsers();
     const isValidUser = users.filter((user) => user.email === newUser.email || user.username === newUser.username); // eslint-disable-line
-    console.log(isValidUser);
     if (isValidUser.length) {
       return false;
     }
@@ -46,8 +45,8 @@ const addUser = (user) => {
     users.push(newUser);
     fs.writeFile(path.join(process.cwd(), 'src', 'utils', 'users.json'), JSON.stringify(users, null, 2), (err) => {
       if (err) throw err;
-      return true;
     });
+    return true;
   }
   return false;
 };
