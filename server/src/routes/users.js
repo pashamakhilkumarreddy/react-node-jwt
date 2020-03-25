@@ -1,9 +1,15 @@
 const router = require('express').Router();
 
-const { UsersController } = require('../controllers');
+const {
+  UsersController,
+} = require('../controllers');
 
-router.get('/users', UsersController.usersGet);
+const {
+  checkUserToken,
+} = require('../policies');
 
-router.get('/users/:user', UsersController.userGet);
+router.get('/users', checkUserToken, UsersController.usersGet);
+
+router.get('/users/:user', checkUserToken, UsersController.userGet);
 
 module.exports = router;

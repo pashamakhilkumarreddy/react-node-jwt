@@ -1,6 +1,6 @@
 const {
   getUsers,
-} = require('../utils/constants');
+} = require('../utils/helpers');
 
 module.exports = {
   usersGet(req, res) {
