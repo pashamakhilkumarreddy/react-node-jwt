@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { destroyUserSession }  from '../../../utils/helpers';
 
 const Header = () => {
+    const showLogin = useState(true);
     let history = useHistory();
     const logout = (e) => {
         e.preventDefault();
-        localStorage.removeItem('Authorization');
-        localStorage.removeItem('user');
-        localStorage.removeItem('isLoggedIn');
+        destroyUserSession();
     }
     return (
         <header>
@@ -27,12 +27,17 @@ const Header = () => {
                         <a href="/" className={`navbar-item`}>Home</a>
                     </div>
                     <div className={`navbar-end`}>
-                        <div className={`navbar-item`}>
-                            <Link to="/login" className={`button is-primary`} data-class="login">Login</Link>
-                        </div>
-                        <div className={`navbar-item`} onClick={(e) => { history.push('/login'); logout(e); }}>
-                            <Link to="/logout" className={`button is-danger`} data-class="log-out">Log Out</Link>
-                        </div>
+                        { 
+                            showLogin ? (
+                            <div className={`navbar-item`}>
+                                <Link to="/login" className={`button is-primary`} data-class="login">Login</Link>
+                            </div>                        
+                             ): (
+                                <div className={`navbar-item`} onClick={(e) => { history.push('/login'); logout(e); }}>
+                                    <Link to="/logout" className={`button is-danger`} data-class="log-out">Log Out</Link>
+                                </div>
+                             )
+                        }
                     </div>
                 </div>
             </nav>

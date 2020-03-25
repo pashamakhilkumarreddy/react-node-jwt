@@ -11,8 +11,12 @@ const Users = () => {
 
     useEffect(() => {
         (async () => {
-            const result = await UsersService.index();
-            setUsers([...result.data.users]);
+            try {
+                const result = await UsersService.index();
+                setUsers([...result.data.users]);
+            } catch (err) {
+                console.log(err);
+            }
         })();
     }, [])
     return (

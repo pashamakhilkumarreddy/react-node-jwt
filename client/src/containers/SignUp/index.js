@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-
 import { Link, Redirect } from 'react-router-dom';
-
 import { isValidEmail, isValidPassword }  from '../../utils/constants';
-
+import { startUserSession }  from '../../utils/helpers';
 import AuthenticationService from '../../services/AuthenticationService';
 
 export default class SignUp extends Component {
@@ -75,11 +73,9 @@ export default class SignUp extends Component {
           email: this.state.email,
           password: this.state.password
         });
-        const { data } = response;
-        if (!data.err) {
-          localStorage.setItem('Authorization', `${data.token}`);
-          localStorage.setItem('user', data.user);
-          localStorage.setItem('isLoggedIn', true);
+        const { data: { token, user } } = response;
+        if (!response.data.err) {
+          startUserSession(token, user);
           this.setState({
             response: {
               error: false,

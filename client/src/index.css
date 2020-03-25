@@ -37,7 +37,7 @@ body {
 .auth-form .is-danger::before {
   content: '';
   display: inline-block;
-  background: url('/static/images/IconError.svg') no-repeat;
+  background: url('./static/images/IconError.svg') no-repeat;
   width: 1rem;
   height: 1rem;
   margin: 0 0.3rem 0 0;
@@ -47,7 +47,7 @@ body {
 .auth-form .is-success::before {
   content: '';
   display: inline-block;
-  background: url('/static/images/IconSuccess.svg') no-repeat;
+  background: url('./static/images/IconSuccess.svg') no-repeat;
   width: 20px;
   height: 20px;
   margin: 0 0.3rem 0 0;
@@ -76,4 +76,8 @@ body {
 
 .mb-2 {
   margin-bottom: 0.5rem;
+}
+
+.help {
+  font-size: 0.9rem;
 }
