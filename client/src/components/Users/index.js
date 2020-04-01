@@ -33,6 +33,7 @@ const Users = () => {
                                         <th>Username</th>
                                         <th>Email</th>
                                         <th>Address</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,7 +50,6 @@ const Users = () => {
                 </div>
             </div>
         </section>
-
     );
 }
 

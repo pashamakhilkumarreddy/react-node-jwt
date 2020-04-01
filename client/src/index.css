@@ -25,6 +25,10 @@ body {
   min-height: 100vh;
 }
 
+.navbar-dropdown {
+  font-size: 1rem !important;
+}
+
 .auth-form {
   border: 1px solid #d7d7d7;
   border-radius: 5px;

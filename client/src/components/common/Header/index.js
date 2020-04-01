@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { destroyUserSession }  from '../../../utils/helpers';
+import { destroyUserSession, getUserName }  from '../../../utils/helpers';
 
 const Header = () => {
-    const showLogin = useState(true);
     let history = useHistory();
+    const isUserLoggedIn = () => window.localStorage.getItem('isLoggedIn');
     const logout = (e) => {
         e.preventDefault();
         destroyUserSession();
@@ -27,17 +27,25 @@ const Header = () => {
                         <a href="/" className={`navbar-item`}>Home</a>
                     </div>
                     <div className={`navbar-end`}>
-                        { 
-                            showLogin ? (
-                            <div className={`navbar-item`}>
-                                <Link to="/login" className={`button is-primary`} data-class="login">Login</Link>
-                            </div>                        
-                             ): (
-                                <div className={`navbar-item`} onClick={(e) => { history.push('/login'); logout(e); }}>
-                                    <Link to="/logout" className={`button is-danger`} data-class="log-out">Log Out</Link>
-                                </div>
-                             )
-                        }
+                        <div className={'navbar-item has-dropdown is-hoverable ' + (isUserLoggedIn() ? '': 'display-none')}>
+                            <a className={`navbar-link`}>
+                                {getUserName()}
+                            </a>
+                            <div className={`navbar-dropdown`}>
+                                <Link to="/users" className={`navbar-item`}>
+                                    Users
+                                </Link>
+                                <Link to="/add-user" className={`navbar-item`}>
+                                    Add User
+                                </Link>
+                            </div>
+                        </div>
+                        <div className={`navbar-item`}>
+                            <Link to="/login" className={'button is-primary ' + (isUserLoggedIn() ? 'display-none': '')} data-class="login">Login</Link>
+                        </div>                        
+                        <div className={`navbar-item`} onClick={(e) => { history.push('/login'); logout(e); }}>
+                            <Link to="/logout" className={'button is-danger ' + (isUserLoggedIn() ? '': 'display-none')} data-class="log-out">Log Out</Link>
+                        </div>
                     </div>
                 </div>
             </nav>

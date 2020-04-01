@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const User = ({userDetails: user}) => {
@@ -10,7 +11,9 @@ const User = ({userDetails: user}) => {
                 <td>{user.username}</td>
                 <td>{user.email}</td>
                 <td>{user.address.street ? user.address.street: 'Not Available'}</td>
-                <td></td>
+                <td>
+                    <Link to={`/users/${user.id}`} className={`button is-info`} data-class="view-user">View</Link>
+                </td>
             </tr>
         </Fragment>
     );

@@ -7,11 +7,11 @@ import Footer from '../../components/common/Footer';
 function App() {
   return (
     <Fragment>
-      <Header />
-        <main>
-          <Routes />
-        </main>
-      <Footer />
+        <Header />
+          <main>
+            <Routes />
+          </main>
+        <Footer />
     </Fragment>
   );
 }
