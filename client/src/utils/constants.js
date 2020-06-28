@@ -1,6 +1,7 @@
+/* eslint-disable no-useless-escape */
+
 const isValidEmail = (email) => {
-  const emailRegex =
-    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const isValid = emailRegex.test(email);
   if (email.trim() && isValid) {
     return {
@@ -22,15 +23,16 @@ const isValidPassword = (password) => {
       text: 'Valid Password',
       match: isValid
     };
-  }
+  }  
   return {
-    text: 'Invalid Password. Password should be of minimum of 8 eight characters with atleast one capital letter, \
-        one number and a special character',
+    // eslint-disable-next-line no-multi-str
+    text: 'Invalid password. Password should be a minimum of 8 eight characters with atleast one capital letter, \
+        one number and a special character', 
     match: isValid
   };
 };
 
 export {
-  isValidEmail, 
+  isValidEmail,
   isValidPassword
 }

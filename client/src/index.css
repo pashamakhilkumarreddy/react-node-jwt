@@ -64,15 +64,15 @@ body {
   border: 1px solid #d7d7d7;
   border-radius: 5px;
   padding: 2rem 3rem;
-  -webkit-box-shadow: 0 0px 10px 0px rgba(119, 119, 119, 0.7);
-  -moz-box-shadow: 0 0px 10px 0px rgba(119, 119, 119, 0.7);
-  box-shadow: 0 0px 10px 0px rgba(119, 119, 119, 0.7);
+  -webkit-box-shadow: 0 0 10px 0 rgba(119, 119, 119, 0.7);
+  -moz-box-shadow: 0 0 10px 0 rgba(119, 119, 119, 0.7);
+  box-shadow: 0 0 10px 0 rgba(119, 119, 119, 0.7);
 }
 
 .auth-form .is-danger::before {
   content: '';
   display: inline-block;
-  background: url('/assets/images/IconError.svg') no-repeat;
+  background: url('./assets/images/IconError.svg') no-repeat;
   width: 1rem;
   height: 1rem;
   margin: 0 0.3rem 0 0;
@@ -82,7 +82,7 @@ body {
 .auth-form .is-success::before {
   content: '';
   display: inline-block;
-  background: url('/assets/images/IconSuccess.svg') no-repeat;
+  background: url('./assets/images/IconSuccess.svg') no-repeat;
   width: 20px;
   height: 20px;
   margin: 0 0.3rem 0 0;
@@ -99,14 +99,6 @@ body {
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: baseline;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 2rem 1.5rem;
-  border-top: 1px solid #d7d7d7;
 }
 
 .mb-2 {

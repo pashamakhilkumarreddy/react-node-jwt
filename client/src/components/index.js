@@ -4,8 +4,8 @@ import NotFound from './errors/NotFound';
 import Home from './Home';
 
 export {
-    Users,
-    UserProfile,
-    NotFound,
-    Home
+  Users,
+  UserProfile,
+  NotFound,
+  Home
 }

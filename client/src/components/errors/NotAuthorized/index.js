@@ -1,22 +1,20 @@
-import React from 'react';
+import React, { memo, Fragment } from 'react';
+import { Helmet } from 'react-helmet';
 import NotAuthorized from '../../../assets/images/NotAuthorized.png';
 
 const NotAuthorized = () => {
-    return (
-        <section className={`hero`}>
-            <div className={`hero-body`}>
-                <div className={`container`}>
-                    <div className={`columns is-centered`}>
-                        <div className={`column is-mobile is-12`}>
-                            <figure>
-                                <img src={NotAuthorized} className={`not-authorized image-is-square`} alt="Not Authorized" />
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-            </div>
-      </section>
-    )
+  return (
+    <Fragment>
+      <Helmet>
+        <title>Not Authorized</title>
+      </Helmet>
+      <div className={`columns is-centered is-vcentered is-mobile`}>
+        <div className={`column is-12`}>
+          <img src={NotAuthorized} className={`not-authorized`} alt="Not Authorized" decoding="async" loading="lazy" importance="high" />
+        </div>
+      </div>
+    </Fragment>
+  )
 }
 
-export default NotAuthorized;
+export default memo(NotAuthorized);
