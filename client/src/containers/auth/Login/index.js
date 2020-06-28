@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { isValidEmail, isValidPassword }  from '../../utils/constants';
-import { startUserSession }  from '../../utils/helpers';
-import AuthenticationService from '../../services/AuthenticationService';
+import { isValidEmail, isValidPassword }  from '../../../utils/constants';
+import { startUserSession }  from '../../../utils/helpers';
+import AuthenticationService from '../../../services/AuthenticationService';
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'john@doe.com',
-      password: 'tilg6S7Tg9I2IYYZQpiI',
+      email: '',
+      password: '',
       rememberMe: true,
       emailValidation: {
         valid: true,
@@ -129,14 +129,14 @@ export default class Login extends Component {
                     </label>
                   </div>
                   <div className={`field`}>
-                    <Link to="/signup" className={`btn btn-link is-size-5`}>Not yet with us? Sign Up</Link>
+                    <Link to="/signup" className={`btn btn-link`}>Not yet with us? Sign Up</Link>
                   </div>
                 </div>
-                {this.state.response.text && <p className={'help has-text-centered is-size-5 mb-2 ' + (this.state.response.error ? 'is-danger': 'is-success')}>{this.state.response.text}</p> }
+                {this.state.response.text && <p className={'help has-text-centered mb-2 ' + (this.state.response.error ? 'is-danger': 'is-success')}>{this.state.response.text}</p> }
                 <div className={`field`} data-class="login-button">
                   <button id="login-button" className={`button is-link is-fullwidth`} name="loginButton" type="button" onClick={this.handleLoginSubmit}>Login</button>
                 </div>
-                <div className={`field has-text-centered is-size-5`}>
+                <div className={`field has-text-centered`}>
                   <Link to="/forgot-password" className={`btn btn-link`}>Forgot your Password?</Link>
                 </div>
               </form>

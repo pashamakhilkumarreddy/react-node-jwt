@@ -1,6 +1,6 @@
 import Users from './Users';
 import UserProfile from './UserProfile';
-import NotFound from './Errors/NotFound';
+import NotFound from './errors/NotFound';
 import Home from './Home';
 
 export {

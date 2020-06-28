@@ -1,7 +1,7 @@
-import Login from './Login';
-import SignUp from './SignUp';
+import Login from './auth/Login';
+import SignUp from './auth/SignUp';
 
 export {
-    Login,
-    SignUp
+  Login,
+  SignUp
 }

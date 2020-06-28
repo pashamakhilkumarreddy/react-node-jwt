@@ -1,7 +1,7 @@
 import React from 'react';
-import NotFoundImage from '../../../static/images/NotFound.gif';
+import NotAuthorized from '../../../assets/images/NotAuthorized.png';
 
-const NotFound = () => {
+const NotAuthorized = () => {
     return (
         <section className={`hero`}>
             <div className={`hero-body`}>
@@ -9,7 +9,7 @@ const NotFound = () => {
                     <div className={`columns is-centered`}>
                         <div className={`column is-mobile is-12`}>
                             <figure>
-                            <img src={NotFoundImage} className={`not-found image-is-square`} alt="Not Found" />
+                                <img src={NotAuthorized} className={`not-authorized image-is-square`} alt="Not Authorized" />
                             </figure>
                         </div>
                     </div>
@@ -19,4 +19,4 @@ const NotFound = () => {
     )
 }
 
-export default NotFound;
+export default NotAuthorized;

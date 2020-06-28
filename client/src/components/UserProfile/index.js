@@ -46,7 +46,7 @@ const UserProfile = () => {
                                 <footer className={`card-footer`}>
                                     <p className={`card-footer-item`}>
                                         <span>
-                                            <a href={displayDetail(userDetails.website)} target="_blank">Website</a>
+                                            <a href={displayDetail(userDetails.website)} target="_blank" rel="noopener noreferrer">Website</a>
                                         </span>
                                     </p>
                                 </footer>

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { isValidEmail, isValidPassword }  from '../../utils/constants';
-import { startUserSession }  from '../../utils/helpers';
-import AuthenticationService from '../../services/AuthenticationService';
+import { isValidEmail, isValidPassword }  from '../../../utils/constants';
+import { startUserSession }  from '../../../utils/helpers';
+import AuthenticationService from '../../../services/AuthenticationService';
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -134,11 +134,11 @@ export default class SignUp extends Component {
                       I agree to all the Terms and Conditions
                     </label>
                   </div>
-                  <div className={`field is-size-5`}>
+                  <div className={`field`}>
                     <Link to="/login" className={`btn btn-link`}>Already with us?</Link>
                   </div>
                 </div>
-                {this.state.response.text && <p className={'help has-text-centered is-size-5 mb-2 ' + (this.state.response.error ? 'is-danger': 'is-success')}>{this.state.response.text}</p>}
+                {this.state.response.text && <p className={'help has-text-centered mb-2 ' + (this.state.response.error ? 'is-danger': 'is-success')}>{this.state.response.text}</p>}
                 <div className={`field`} data-class="signup-button">
                   <button id="signup-button" className={`button is-link is-fullwidth`} name="signUpButton" type="button" onClick={this.handleUserSignUp}>Sign Up</button>
                 </div>
