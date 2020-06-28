@@ -11,7 +11,7 @@ const {
   ONE_WEEK,
 } = require('./constants');
 
-const getUsers = () => {
+const getAllUsers = () => {
   const rawUsers = fs.readFileSync(path.join(process.cwd(), 'src', 'utils', 'users.json'));
   const users = JSON.parse(rawUsers);
   return users;
@@ -22,7 +22,7 @@ const addUser = (user) => {
     ...user,
   };
   if (newUser.id && newUser.username && newUser.email && newUser.salt && newUser.password) {
-    const users = getUsers();
+    const users = getAllUsers();
     const isValidUser = users.filter((user) => user.email === newUser.email || user.username === newUser.username); // eslint-disable-line
     if (isValidUser.length) {
       return false;
@@ -56,7 +56,7 @@ const genSalt = (bytes = 64) => randomBytes(bytes).toString('hex');
 const genHashedPass = (password, salt) => pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex');
 
 const comparePassword = (password, email) => {
-  const users = getUsers();
+  const users = getAllUsers();
   const isValidUser = users.filter((user) => user.email === email);
   if (isValidUser.length) {
     const user = isValidUser[0];
@@ -71,7 +71,7 @@ const jwtSignUser = (payload, validity = ONE_WEEK) => jwt.sign(payload, config.j
 });
 
 module.exports = {
-  getUsers,
+  getAllUsers,
   genSalt,
   genHashedPass,
   comparePassword,

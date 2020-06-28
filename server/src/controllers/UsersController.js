@@ -1,20 +1,20 @@
 const {
-  getUsers,
+  getAllUsers,
 } = require('../utils/helpers');
 
 module.exports = {
-  usersGet(req, res) {
-    const users = getUsers();
+  getUsers(req, res) {
+    const users = getAllUsers();
     res.status(200).send({
       err: false,
       users,
     });
   },
-  userGet(req, res) {
+  getUser(req, res) {
     try {
       const { userId } = req.params;
       const id = parseInt(userId, 10);
-      const users = getUsers();
+      const users = getAllUsers();
       const isValidUser = users.filter((user) => user.id === id);
       if (isValidUser.length) {
         const validUser = isValidUser[0];

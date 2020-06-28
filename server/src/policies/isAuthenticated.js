@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 const {
-  getUsers,
+  getAllUsers,
 } = require('../utils/helpers');
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
       const {
         email,
       } = payload;
-      const users = getUsers();
+      const users = getAllUsers();
       const isAuthenticatedUser = users.filter((user) => user.email === email);
       if (isAuthenticatedUser.length) {
         req.token = token;

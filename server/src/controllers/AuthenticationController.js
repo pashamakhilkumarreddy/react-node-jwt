@@ -1,5 +1,5 @@
 const {
-  getUsers,
+  getAllUsers,
   genSalt,
   genHashedPass,
   comparePassword,
@@ -11,16 +11,15 @@ const {
   ONE_WEEK,
 } = require('../utils/constants');
 
-
 module.exports = {
-  loginPost(req, res) {
+  login(req, res) {
     const {
       email,
       password,
     } = req.body;
     try {
       if (email && password) {
-        const users = getUsers();
+        const users = getAllUsers();
         const result = users.filter((user) => user.email === email);
         if (result.length) {
           const user = result[0];
@@ -60,7 +59,7 @@ module.exports = {
       });
     }
   },
-  signUpPost(req, res) {
+  register(req, res) {
     try {
       const {
         email,

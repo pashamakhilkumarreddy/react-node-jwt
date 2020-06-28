@@ -284,5 +284,30 @@
       "catchPhrase": "Multi-layered client-server neural-net",
       "bs": "harness real-time e-markets"
     }
+  },
+  {
+    "id": "8bbf5b1bc87g215",
+    "name": "",
+    "username": "bm7puvfrete15933561353837",
+    "email": "john@john.com",
+    "salt": "e185c33db0ad24c6e8f78b9c5a83a8b9c4a4f3768713dcfc6dd384e76e330592a46b69089571430cc36930926ab99c130789d66f1282c95d86c7eb3ff3936cd6",
+    "password": "94d6f4f2c4487264bbb1cdad88822dc3d445bbc4fb58deda2dcfe7ad39f14a66386790ce931c3402519bb1beccaba8552e8e1976e4e9b1dd30df758ce5f18764",
+    "phone": "",
+    "website": "",
+    "address": {
+      "street": "Kattie Turnpike",
+      "suite": "Suite 198",
+      "city": "Lebsackbury",
+      "zipcode": "31428-2261",
+      "geo": {
+        "lat": "-38.2386",
+        "lng": "57.2232"
+      }
+    },
+    "company": {
+      "name": "Hoeger LLC",
+      "catchPhrase": "Centralized empowering task-force",
+      "bs": "target end-to-end models"
+    }
   }
 ]
