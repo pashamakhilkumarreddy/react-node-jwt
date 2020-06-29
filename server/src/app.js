@@ -16,5 +16,5 @@ require('./routes')(app);
 const PORT = config.server.port;
 
 app.listen(PORT, () => {
-  console.log(`Server is running on ${PORT}`);
+  console.info(`Server is up and running on ${PORT}`);
 });

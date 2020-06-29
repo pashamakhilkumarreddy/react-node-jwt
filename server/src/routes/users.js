@@ -7,7 +7,7 @@ const {
 
 const {
   checkUserToken,
-} = require('../policies');
+} = require('../middlewares');
 
 router.get('/users', checkUserToken, getUsers);
 

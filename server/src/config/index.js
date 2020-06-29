@@ -30,5 +30,13 @@ module.exports = {
     Ke9NRSMCgYEAr3Ca7nGllMkuefVLaU+RkCFUPwTUvvHn2384eRbNm/Ao0ruMZ553
     ttPThoOp68bGY7K8YVEdXVcuVNScJM8PmN0RNNI30w/lOZTrDet0D8s6FTKx2FyJ
     0wuNGffb+0bYuoGdEtdZvzQau9YgoCLfEB6AKHqq6dMkApJMWCIXK38=`.trim(),
+    expiry: process.env.JWT_EXPIRY,
+  },
+  db: {
+    DB_HOST: process.env.DB_HOST,
+    DB_PORT: process.env.DB_PORT,
+    DB_NAME: process.env.DB_NAME,
+    DB_USER: process.env.DB_USER,
+    DB_PASSWORD: process.env.DB_PASSWORD,
   },
 };
