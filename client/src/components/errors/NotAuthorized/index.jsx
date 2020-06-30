@@ -6,7 +6,7 @@ const NotAuthorized = () => {
   return (
     <Fragment>
       <Helmet>
-        <title>Not Authorized</title>
+        <title>Not Authorized | React Express App</title>
       </Helmet>
       <div className={`columns is-centered is-vcentered is-mobile`}>
         <div className={`column is-12`}>

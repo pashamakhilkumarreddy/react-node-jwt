@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+const config = require('../config');
 
 const {
   Schema,
@@ -112,12 +115,48 @@ UserSchema.methods.comparePassword = async function comparePassword(password) {
   }
 };
 
-// UserSchema.methods.genRefreshToken = async function genRefreshToken() {
+UserSchema.methods.genRefreshToken = async function genRefreshToken() {
+  const data = {
+    id: this.id,
+    username: this.username,
+    email: this.email,
+    isAdmin: this.isAdmin,
+    tokenType: 'REFRESH',
+  };
+  const token = jwt.sign(data, config.jwt.JWT_SECRET, {
+    expiresIn: '24h',
+    issuer: config.jwt.JWT_ISSUER,
+  });
+  return token;
+};
 
-// };
+UserSchema.methods.genAccessToken = async function genAccessToken() {
+  const data = {
+    id: this.id,
+    username: this.username,
+    email: this.email,
+    isAdmin: this.isAdmin,
+  };
+  const token = jwt.sign(data, config.jwt.JWT_SECRET, {
+    expiresIn: '15m',
+    issuer: config.jwt.JWT_ISSUER,
+  });
+  return token;
+};
 
-// UserSchema.methods.genAccessToken = async function genAccessToken() {
-
-// };
+UserSchema.methods.prettifyUser = function prettifyUser() {
+  const obj = this.toObject();
+  const {
+    _id,
+    password,
+    isVerified,
+    __v,
+    ...rest
+  } = obj;
+  const userData = {
+    ...rest,
+  };
+  return userData;
+};
 
 module.exports = mongoose.model('User', UserSchema);

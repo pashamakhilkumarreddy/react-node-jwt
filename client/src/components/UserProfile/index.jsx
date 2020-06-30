@@ -9,7 +9,7 @@ const UserProfile = () => {
     (async () => {
       try {
         const userId = parseInt(window.location.pathname.split('/').slice(-1));
-        const result = await UsersService.show(userId);
+        const result = await UsersService.getUser(userId);
         updateUserDetails(result.data.user[0]);
       } catch (err) {
         console.error(err.response)
@@ -22,7 +22,7 @@ const UserProfile = () => {
   return (
     <Fragment>
       <Helmet>
-          <title>{userDetails.name}</title>
+          <title>{userDetails.name} | React Express App</title>
       </Helmet>
       <div className={`columns is-centered is-vcentered is-mobile`}>
         <div className={`column is-12`}>

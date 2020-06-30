@@ -5,21 +5,21 @@ import {
 } from 'react-router-dom';
 import {
   Login,
-  SignUp
+  Register,
 } from '../containers';
 import {
   Users,
   UserProfile,
   NotFound,
-  Home
+  Home,
 } from '../components';
 
 export default () =>
   <Switch>
     <Route path="/" component={Home} exact />
     <Route path="/login" component={Login} exact />
-    <Route path="/signup" component={SignUp} exact />
-    <Route path="/add-user" component={SignUp} exact />
+    <Route path="/signup" component={Register} exact />
+    <Route path="/add-user" component={Register} exact />
     <Route path="/users" exact>
       <Users />
     </Route>

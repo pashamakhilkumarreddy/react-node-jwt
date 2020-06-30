@@ -5,7 +5,7 @@ module.exports = {
     port: process.env.PORT || 9000,
   },
   jwt: {
-    jwtSecret: process.env.JWT_SECRET || `MIIEpQIBAAKCAQEAyDUBBY0uiDYOxOC0ElT+bq3E45/osB74bYo1OfnB4eIsXu5i
+    JWT_SECRET: process.env.JWT_SECRET || `MIIEpQIBAAKCAQEAyDUBBY0uiDYOxOC0ElT+bq3E45/osB74bYo1OfnB4eIsXu5i
     BnJR7e4KAMGpd+3q/HGMxthOiNKCgybx40mWynG8lObjoikg4VCXKWYdxUncWx9c
     LByARhS1Csv7mObCbW1Y28biy8MlS+zqIRA7Xmin6D0kLhqpcNklr/GI7zyJgoix
     eahjr3T3COE+MC8Syem7tOZ5H/gMfLQ7M+h34OqO1h7TZqTyeSHmt8W2BJlw9AEb
@@ -31,10 +31,11 @@ module.exports = {
     ttPThoOp68bGY7K8YVEdXVcuVNScJM8PmN0RNNI30w/lOZTrDet0D8s6FTKx2FyJ
     0wuNGffb+0bYuoGdEtdZvzQau9YgoCLfEB6AKHqq6dMkApJMWCIXK38=`.trim(),
     expiry: process.env.JWT_EXPIRY,
+    issuer: process.env.JWT_ISSUER || 'express-server',
   },
   db: {
-    DB_HOST: process.env.DB_HOST,
-    DB_PORT: process.env.DB_PORT,
+    DB_HOST: process.env.DB_HOST || 'localhost',
+    DB_PORT: process.env.DB_PORT || '27017',
     DB_NAME: process.env.DB_NAME,
     DB_USER: process.env.DB_USER,
     DB_PASSWORD: process.env.DB_PASSWORD,

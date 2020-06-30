@@ -1,13 +1,13 @@
 import Api from './Api';
 
 export default {
-  index() {
+  getUsers() {
     return Api().get('users');
   },
-  show(userId) {
+  getUser(userId) {
     return Api().get(`users/${userId}`);
   },
-  post (user) {
+  post(user) {
     return Api().post('users', user);
   }
 }

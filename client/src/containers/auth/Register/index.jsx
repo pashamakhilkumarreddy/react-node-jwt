@@ -22,12 +22,12 @@ import {
 } from '../../../utils/helpers';
 import AuthenticationService from '../../../services/AuthenticationService';
 
-export default class Login extends Component {
+export default class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
+      email: 'john@doe.com',
+      password: 'tilg6S7Tg9I2IYYZQpiI',
       rememberMe: true,
       emailValidation: {
         valid: true,
@@ -49,7 +49,7 @@ export default class Login extends Component {
     const email = e.target.value;
     this.setState({
       email
-    });
+    })
     const {
       text,
       match
@@ -59,14 +59,14 @@ export default class Login extends Component {
         valid: match,
         text
       }
-    });
+    })
   }
 
   handlePassword = (e) => {
     const password = e.target.value;
     this.setState({
       password
-    });
+    })
     const {
       text,
       match
@@ -85,11 +85,11 @@ export default class Login extends Component {
     });
   }
 
-  handleLoginSubmit = async (e) => {
+  handleUserRegistration = async (e) => {
     e.preventDefault();
     try {
       if (this.state.email && this.state.password) {
-        const response = await AuthenticationService.login({
+        const response = await AuthenticationService.register({
           email: this.state.email,
           password: this.state.password
         });
@@ -101,10 +101,16 @@ export default class Login extends Component {
         } = response;
         if (!response.data.err) {
           startUserSession(token, user);
+          this.setState({
+            response: {
+              error: false,
+              text: response.data.message
+            }
+          });
           setTimeout(() => {
             this.setState({
               redirect: '/users'
-            });
+            })
           }, 0);
         }
       }
@@ -126,16 +132,15 @@ export default class Login extends Component {
     return (
       <Fragment>
         <Helmet>
-          <title>Login | React Express App</title>
+          <title>Register | React Express App</title>
         </Helmet>
         <FormLayout>
-          <form className={`auth-form login-form`} id="auth-login-form" name="loginForm"
-            onSubmit={this.handleLoginSubmit}>
-            <h1 className={`title is-2 has-text-centered`}>Login</h1>
-            <div className={`field`} data-class="login-email">
-              <label htmlFor="login-email" className={`label`}>Email</label>
+          <form className={`auth-form register-form`} id="auth-register-form" name="registerForm">
+            <h1 className={`title is-2 has-text-centered`}>Register</h1>
+            <div className={`field`} data-class="register-email">
+              <label htmlFor="register-email" className={`label`}>Email</label>
               <div className={`control`}>
-                <input id="login-email" className={`input`} type="email" name="loginEmail"
+                <input id="register-email" className={`input`} type="email" name="registerEmail"
                   placeholder="Please enter your email" autoComplete="off" required value={this.state.email}
                   onChange={this.handleEmail} />
               </div>
@@ -146,28 +151,30 @@ export default class Login extends Component {
               </p>
               }
             </div>
-            <div className={`field`} data-class="login-password">
-              <label htmlFor="login-password" className={`label`}>Password</label>
+            <div className={`field`} data-class="register-password">
+              <label htmlFor="register-password" className={`label`}>Password</label>
               <div className={`control`}>
-                <input id="login-password" className={`input`} type="password" name="loginPassword"
+                <input id="register-password" className={`input`} type="password" name="registerPassword"
                   placeholder="Please enter your password" autoComplete="off" required value={this.state.password}
                   onChange={this.handlePassword} />
               </div>
-              {this.state.passwordValidation.text && <p className={'help ' + 
-              (this.state.passwordValidation.valid ? 'is-success' : 'is-danger' )}>
-                {this.state.passwordValidation.text}</p> }
+              {
+              this.state.passwordValidation.text &&
+              <p className={'help ' + (this.state.passwordValidation.valid ? ' is-success' : 'is-danger' )}>
+                {this.state.passwordValidation.text}
+              </p>
+              }
             </div>
-            <div className={`forgot-password-container`}>
-              <div className={`field`} data-class="login-checkbox">
-                <label htmlFor="login-checkbox" className={`checkbox`}>
-                  <input id="login-checkbox" type="checkbox" checked={this.state.rememberMe}
+            <div className={`terms-and-conditions`}>
+              <div className={`field`} data-class="register-checkbox">
+                <label htmlFor="register-checkbox" className={`checkbox`}>
+                  <input id="register-checkbox" type="checkbox" checked={this.state.rememberMe}
                     onChange={this.handleRememberMe} />
-                  Remember Me
+                  &nbsp;&nbsp;I agree to all the Terms and Conditions
                 </label>
               </div>
               <div className={`field`}>
-                Not yet with us?
-                <Link to="/register" className={`btn btn-link`}>&nbsp;Register</Link>
+                <Link to="/login" className={`btn btn-link`}>Already with us?</Link>
               </div>
             </div>
             {
@@ -176,11 +183,9 @@ export default class Login extends Component {
               {this.state.response.text}
             </p>
             }
-            <div className={`field`} data-class="login-button">
-              <button id="login-button" className={`button is-link is-fullwidth`} name="loginButton">Login</button>
-            </div>
-            <div className={`field has-text-centered`}>
-              <Link to="/forgot-password" className={`btn btn-link`}>Forgot your Password?</Link>
+            <div className={`field`} data-class="register-button">
+              <button id="register-button" className={`button is-link is-fullwidth`} name="registerButton" type="button"
+                onClick={this.handleUserRegistration}>Sign Up</button>
             </div>
           </form>
         </FormLayout>

@@ -15,7 +15,7 @@ const Users = () => {
   useEffect(() => {
     (async () => {
       try {
-        const result = await UsersService.index();
+        const result = await UsersService.getUsers();
         setUsers([...result.data.users]);
       } catch (err) {
         console.error(err);
@@ -25,7 +25,7 @@ const Users = () => {
   return (
     <Fragment>
       <Helmet>
-          <title>Users</title>
+          <title>Users | React Express App</title>
       </Helmet>
       <div className={`columns is-centered is-vcentered is-mobile`}>
         <div className={`column is-12`}>
