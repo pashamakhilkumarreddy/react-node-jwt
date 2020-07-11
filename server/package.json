@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon src/app.js --exec \"npm run lint && node\"",
-    "lint": "eslint --ext .js src",
-    "lint:fix": "eslint --ext .js src --fix",
+    "lint": "eslint --ext .js src/",
+    "lint:fix": "eslint --ext .js src/ --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -25,10 +25,11 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
     "mongoose": "^5.9.11",
-    "pm2": "^4.4.0"
+    "pm2": "^4.4.0",
+    "response-time": "^2.3.2"
   },
   "devDependencies": {
-    "eslint": "^7.3.1",
+    "eslint": "^7.4.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
     "nodemon": "^2.0.4"

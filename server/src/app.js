@@ -2,6 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 const compression = require('compression');
+const responseTime = require('response-time');
 const mongoose = require('mongoose');
 
 const {
@@ -15,8 +16,11 @@ app.use(compression());
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
+app.use(responseTime());
 
-require('./routes')(app);
+require('./routes')({
+  app,
+});
 
 const PORT = server.port;
 
